@@ -16,40 +16,26 @@ namespace FYP.Services
             {
                 return;
             }
-            try
-            {
-                string databasepath = Path.Combine(FileSystem.AppDataDirectory, "mydatbase.db3");
-                db = new SQLiteAsyncConnection(databasepath, SQLiteOpenFlags.ReadWrite | SQLiteOpenFlags.Create | SQLiteOpenFlags.SharedCache);
-                db.CreateTableAsync<MyTable>();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An error occurred: {ex.Message}");
-            }
+            string databasepath = Path.Combine(FileSystem.AppDataDirectory, "mydatbase.db3");
+            db = new SQLiteAsyncConnection(databasepath, SQLiteOpenFlags.ReadWrite | SQLiteOpenFlags.Create | SQLiteOpenFlags.SharedCache);
+            db.CreateTableAsync<MyTable>();
         }
 
         public void InsertData(int gameid, string preorder,string rating,string standards,string overpriced,string agerating,string gameplay,string recommend,string impact)
         {
-            try
-            {
-                MyTable myNewTable = new MyTable
-                {
-                    GameId = gameid,
-                    PreOrder = preorder,
-                    Rating = rating,
-                    Standards = standards,
-                    OverPriced = overpriced,
-                    AgeRating = agerating,
-                    Gameplay = gameplay,
-                    Recommend = recommend,
-                    Impact = impact
-                };
-                db.InsertAsync(myNewTable);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An error occurred: {ex.Message}");
-            }
+        MyTable myNewTable = new MyTable
+        {
+            GameId = gameid,
+            PreOrder = preorder,
+            Rating = rating,
+            Standards = standards,
+            OverPriced = overpriced,
+            AgeRating = agerating,
+            Gameplay = gameplay,
+            Recommend = recommend,
+            Impact = impact
+        };
+            db.InsertAsync(myNewTable);
         }
     }
 
