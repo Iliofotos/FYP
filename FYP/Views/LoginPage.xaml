@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FYP.Views.LoginPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <CheckBox Grid.Row="5"  x:Name="checkBox" CheckedChanged="Login_CheckedChanged" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" />
+                <Label  Grid.Row="5"  Text="I agree that I am 16 years old or above" VerticalOptions="EndAndExpand" HorizontalTextAlignment="Center" FontSize="Medium"/>
+                <Button x:Name="LoginButton" IsEnabled="False" Clicked="LoginButton_Clicked" Grid.Row="6" Text="Login" Scale="1" VerticalOptions="StartAndExpand"/>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

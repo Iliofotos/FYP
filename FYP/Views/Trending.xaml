@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:FYP.ViewModels"
+             x:Class="FYP.Views.Trending">
+    <ContentPage.BindingContext>
+        <viewmodels:NewReleasesViewModel/>
+    </ContentPage.BindingContext>
+    <StackLayout>
+        <Label Text="Trending" TextColor="Black" FontSize="24" FontAttributes="Bold" Margin="15" />
+        <ListView ItemsSource="{Binding Games}" HasUnevenRows="True" BackgroundColor="White" ItemTapped="OnItemTabbed">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="viewmodels:NewGames">
+                    <ViewCell>
+                        <Grid Padding="0">
+                            <Frame CornerRadius="20" BackgroundColor="Bisque">
+                                <StackLayout Orientation="Horizontal">
+                                    <Image Source="{Binding ImageSource}"
+                                           WidthRequest="100" HeightRequest="100"/>
+                                    <StackLayout VerticalOptions="Center">
+                                        <Label VerticalOptions="Center"
+                                               FontSize="Medium"
+                                               Text="{Binding GameTitle}"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </StackLayout>
+</ContentPage>

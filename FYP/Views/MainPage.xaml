@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:FYP.ViewModels" x:DataType="viewmodels:NewReleasesViewModel"
+             x:Class="FYP.Views.MainPage"
+             BackgroundColor="White"
+             >
+             <ContentPage.BindingContext>
+        <viewmodels:NewReleasesViewModel/>
+    </ContentPage.BindingContext>
+
+        <StackLayout>
+            <Label Text="New Releases" TextColor="Black" FontSize="24" FontAttributes="Bold" Margin="15"/>
+
+        <CarouselView ItemsSource="{Binding Games}" HeightRequest="280" PeekAreaInsets="100">
+            <CarouselView.ItemTemplate>
+                    <DataTemplate x:DataType="viewmodels:NewGames">
+                        <StackLayout>
+                            <Frame HeightRequest="300" 
+                                 WidthRequest="180" 
+                                 BackgroundColor="white" 
+                                 Padding="0" 
+                                 CornerRadius="10"
+                                 HasShadow="True" 
+                                 Margin="15"
+                                 HorizontalOptions="CenterAndExpand">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Tapped="TapGestureRecognizer_Tapped" >
+                                </TapGestureRecognizer>
+                            </Frame.GestureRecognizers>
+                                <Grid>
+                                    <StackLayout BackgroundColor="DimGray">
+                                    <Image Source="{Binding ImageSource}" Aspect="AspectFill">
+                                    </Image>
+                                    </StackLayout>
+                                <StackLayout Margin="-5">
+                                    <Label Text="{Binding GameTitle}" 
+                                         TextColor="PaleGoldenrod"
+                                         FontSize="18" 
+                                         FontAttributes="Bold"
+                                         Margin="15"
+                                         VerticalOptions="EndAndExpand"/>
+                                </StackLayout>
+                            </Grid>
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+
+            <StackLayout Orientation="Horizontal">
+                <Label HorizontalOptions="StartAndExpand" Text="Want To Find New Games?" TextColor="Black" FontSize="24" FontAttributes="Bold" Margin="15"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <StackLayout Margin="5" HorizontalOptions="StartAndExpand">
+                <ImageButton Clicked="Trending_Clicked" Source="https://vectorified.com/images/google-trends-icon-38.png" CornerRadius="0" HeightRequest="80"/>
+                    <Label HorizontalOptions="Center" Text="Trending" TextColor="Gray" FontSize="18" FontAttributes="None" VerticalTextAlignment="Center" Margin="-10"/>
+                </StackLayout>
+                <StackLayout Margin="5" HorizontalOptions="StartAndExpand">
+                    <ImageButton Source="https://cdn4.iconfinder.com/data/icons/popular-badges-glyph/48/Sed-28-512.png" Clicked="PopularButton_Clicked" CornerRadius="0" HeightRequest="80"/>
+                    <Label HorizontalOptions="Center" Text="Popular" TextColor="Gray" FontSize="18" FontAttributes="None" VerticalTextAlignment="Center" Margin="-10"/>
+                </StackLayout>
+                <StackLayout Margin="5" HorizontalOptions="EndAndExpand">
+                    <ImageButton Source="https://static.thenounproject.com/png/426792-200.png" Clicked="BestPrice_Clicked" CornerRadius="0" HeightRequest="80"/>
+                    <Label HorizontalOptions="Center" Text="Best Price" TextColor="Gray" FontSize="18" FontAttributes="None" VerticalTextAlignment="Center" Margin="-10"/>
+                </StackLayout>
+                <StackLayout Margin="5" HorizontalOptions="EndAndExpand">
+                <ImageButton Clicked="UpComing_Clicked" Source="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.nin9tails.com%2Fwp-content%2Fuploads%2F2019%2F12%2Fcoming-soon-PNG-orange-coloe.png" CornerRadius="0" HeightRequest="80"/>
+                    <Label HorizontalOptions="Center" Text="Upcoming" TextColor="Gray" FontSize="18" FontAttributes="None" VerticalTextAlignment="Center" Margin="-10"/>
+                </StackLayout>
+            </StackLayout>
+
+
+        </StackLayout>
+   
+</ContentPage>

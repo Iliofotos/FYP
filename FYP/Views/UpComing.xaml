@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:FYP.ViewModels"
+             x:Class="FYP.Views.UpComing">
+    <ContentPage.BindingContext>
+        <viewmodels:NewReleasesViewModel/>
+    </ContentPage.BindingContext>
+    <StackLayout>
+        <Label Text="Upcoming" TextColor="Black" FontSize="24" FontAttributes="Bold" Margin="15" />
+        <ListView ItemsSource="{Binding Games}" HasUnevenRows="True" BackgroundColor="White">
+            <ListView.ItemTemplate >
+                <DataTemplate x:DataType="viewmodels:NewGames" >
+                    <ViewCell>
+                        <Grid Padding="0">
+                            <Frame CornerRadius="20" BackgroundColor="Bisque">
+                                <StackLayout Orientation="Horizontal">
+                                    <Image Source="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.nin9tails.com%2Fwp-content%2Fuploads%2F2019%2F12%2Fcoming-soon-PNG-orange-coloe.png"
+                                           WidthRequest="100" HeightRequest="100"/>
+                                    <StackLayout VerticalOptions="CenterAndExpand">
+                                        <Label VerticalOptions="EndAndExpand"
+                                               FontSize="Large"
+                                               Text="Coming Soon"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </StackLayout>
+</ContentPage>

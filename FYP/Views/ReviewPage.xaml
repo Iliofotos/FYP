@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:FYP.ViewModels" x:DataType="viewmodels:NewReleasesViewModel"
+             x:Class="FYP.Views.ReviewPage">
+    <ContentPage.BindingContext>
+        <viewmodels:NewReleasesViewModel/>
+    </ContentPage.BindingContext>
+    <ScrollView>
+        <StackLayout>
+            <Label Text="Select Game" TextColor="Black" FontSize="24" FontAttributes="Bold" Margin="15" />
+            <Picker x:Name="Picker" Title="Select a Game"  SelectedIndexChanged="Picker_SelectedIndexChanged" ItemsSource="{Binding Games}" ItemDisplayBinding="{Binding GameTitle}" />
+
+
+            <Label FontSize="Medium" HorizontalOptions="Center" Text="Did you pre-order this game?"/>
+            <Editor x:Name="Question1" IsSpellCheckEnabled="True" HeightRequest="50" IsEnabled="False"/>
+
+            <Label FontSize="Medium" HorizontalOptions="Center" Text="Did the game meet your expectation?"/>
+            <Editor x:Name="Question2" IsSpellCheckEnabled="True" HeightRequest="50" IsEnabled="False"/>
+
+            <Label FontSize="Medium" HorizontalOptions="Center" Text="Do you think the game was overpriced?"/>
+            <Editor x:Name="Question3" IsSpellCheckEnabled="True" HeightRequest="50" IsEnabled="False"/>
+
+            <Label FontSize="Medium" HorizontalOptions="Center" Text=" Did the gameplay meet your standards? If not how did it affect your opinion of the game?"/>
+            <Editor x:Name="Question4" IsSpellCheckEnabled="True" HeightRequest="50" IsEnabled="False"/>
+
+            <Label FontSize="Medium" HorizontalOptions="Center" Text=" What do you think about the game's age rating? (Is it correct?)"/>
+            <Editor x:Name="Question5" IsSpellCheckEnabled="True" HeightRequest="50" IsEnabled="False"/>
+
+            <Label FontSize="Medium" HorizontalOptions="Center" Text=" How was the gameplay?(e.g It was intresting and fun because...)"/>
+            <Editor x:Name="Question6" IsSpellCheckEnabled="True" HeightRequest="50" IsEnabled="False"/>
+
+            <Label FontSize="Medium" HorizontalOptions="Center" Text=" Would you recommend this game to your friends or other people in general?"/>
+            <Editor x:Name="Question7" IsSpellCheckEnabled="True" HeightRequest="50"  IsEnabled="False"/>
+
+            <Label FontSize="Medium" HorizontalOptions="Center" Text="What would you rate this game from 1-5?"/>
+            <Editor x:Name="Question8" IsSpellCheckEnabled="True" HeightRequest="50" IsEnabled="False"/>
+            <Button x:Name="SavedButton" IsEnabled="False" Pressed="Button_Pressed" BackgroundColor="LightBlue" Text="Save answers"/>
+            <Button x:Name="DoneButton" IsEnabled="False" Pressed="DoneButton_Pressed" BackgroundColor="LightBlue" Text="Done"/>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
