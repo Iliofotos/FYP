@@ -20,6 +20,7 @@ namespace FYP.Views
 
         async private void OnItemTapped(object sender, ItemTappedEventArgs e)
         {
+            //Navigates to the review page
             await Navigation.PushAsync(new ReviewPage());
         }
     }

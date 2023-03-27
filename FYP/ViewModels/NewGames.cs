@@ -2,6 +2,7 @@
 {
     public class NewGames
     {
+        //Contains all the game properties
         public int Id { get; set; }
         public string GameTitle { get; set; }
         public double Rating { get; set; }

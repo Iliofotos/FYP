@@ -3,14 +3,15 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using FYP.Services;
-
-
+using FYP.ViewModels;
 
 namespace FYP.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ReviewPage : ContentPage
     {
+        
+
         public ReviewPage()
         {
             InitializeComponent();
@@ -19,6 +20,7 @@ namespace FYP.Views
 
         private void Picker_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //Disables all the questions and buttons if a game has not been picked
             if (!e.Equals(Title))
             {
                 Question1.IsEnabled = true;
@@ -35,29 +37,61 @@ namespace FYP.Views
         }
         private void Button_Pressed(object sender, EventArgs e)
         {
-            int id;
-            if (Picker.Equals("The Elder Scrolls Online")) { id = 1; }
-            else if (Picker.Equals("World Of Warcraft")) { id = 2; }
-            else { id = 3; }
+            string id = "0";
+            var selectedItem = Picker.SelectedItem as NewGames;
+            //Checks which game did the user pick to assign the corresponding id
+            if (selectedItem != null)
+            {
+                if (selectedItem.GameTitle == "The Elder Scrolls Online") { id = "1"; }
+                else if (selectedItem.GameTitle == "World Of Warcraft") { id = "2"; }
+                else { id = "3"; }
+            }
             DoneButton.IsEnabled = true;
             SavedButton.IsEnabled = false;
-            MySQLDatabase db = new MySQLDatabase();
-            db.MyDatabase();
-            string q1 = Question1.ToString();
-            string q2 = Question2.ToString();
-            string q3 = Question3.ToString();
-            string q4 = Question4.ToString();
-            string q5 = Question5.ToString();
-            string q6 = Question6.ToString();
-            string q7 = Question7.ToString();
-            string q8 = Question8.ToString();
-            db.InsertData(id, q1, q8, q4, q3, q5, q6, q7, q2);
-           
+            //Turns all the user input to text and stores it in a string
+            string q1 = Question1.Text;
+            string q2 = Question2.Text;
+            string q3 = Question3.Text;
+            string q4 = Question4.Text;
+            string q5 = Question5.Text;
+            string q6 = Question6.Text;
+            string q7 = Question7.Text;
+            string q8 = Question8.Text;
+            
+            //Populates the file
+            DependencyService.Get<IFileService>().CreateFile(id);
+            DependencyService.Get<IFileService>().CreateFile(q1);
+            DependencyService.Get<IFileService>().CreateFile(q2);
+            DependencyService.Get<IFileService>().CreateFile(q3);
+            DependencyService.Get<IFileService>().CreateFile(q4);
+            DependencyService.Get<IFileService>().CreateFile(q5);
+            DependencyService.Get<IFileService>().CreateFile(q6);
+            DependencyService.Get<IFileService>().CreateFile(q7);
+            DependencyService.Get<IFileService>().CreateFile(q8);
         }
 
         private async void DoneButton_Pressed(object sender, EventArgs e)
         {
+            //Navigates to the next page
             await Navigation.PushAsync(new MainPage());
+            //Clears the file after the user is done
+            DependencyService.Get<IFileService>().ClearFile();
+        }
+
+        private void OnEditorTextedChanged(object sender, TextChangedEventArgs e)
+        {
+            // Get the entered text
+            string text = e.NewTextValue;
+
+            // Verify if the entered text is a valid number
+            bool isValidNumber = double.TryParse(text, out double number);
+
+            // If the entered text is not a valid number, remove the last character
+            if (!isValidNumber && text.Length > 0)
+            {
+                Editor editor = sender as Editor;
+                editor.Text = text.Substring(0, text.Length - 1);
+            }
         }
     }
 }

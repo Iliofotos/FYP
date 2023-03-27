@@ -19,6 +19,7 @@ namespace FYP.Views
 
         private void Login_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
+            //Checks if the check box is ticked
             if (e.Value)
             {
                 LoginButton.IsEnabled = true;
@@ -32,6 +33,7 @@ namespace FYP.Views
 
         private async void LoginButton_Clicked(object sender, EventArgs e)
         {
+            //Navigates to the main page
             await Navigation.PushAsync(new MainPage());
         }
     }

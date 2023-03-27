@@ -20,6 +20,7 @@ namespace FYP.Views
         }
         async private void OnItemTabbed(object sender, ItemTappedEventArgs e)
         {
+            //Navigates to a different page
             await Navigation.PushAsync(new ReviewPage());
 
         }

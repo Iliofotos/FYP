@@ -15,17 +15,14 @@ namespace FYP.ViewModels
 
         public ObservableCollection<NewGames> Games
         {
-            get { return NewGames; }
-            set { NewGames = value;
-
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Games"));
-            }
+            get { return NewGames; }//!< Gets the data of the collection
+            set { NewGames = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Games")); }//!<Updates the collection with the new data
         }
 
         public NewReleasesViewModel() 
         {
-            Games = new ObservableCollection<NewGames>();
-            AddData();
+            Games = new ObservableCollection<NewGames>();//!< Creates a new instance of the observable collection
+            AddData();//!< Adds the data of the new game
         }
         private void AddData()
         {
