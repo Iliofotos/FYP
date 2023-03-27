@@ -37,6 +37,8 @@ namespace FYP.Views
         }
         private void Button_Pressed(object sender, EventArgs e)
         {
+            int reviewId = 0;
+            reviewId = reviewId + 1;
             string id = "0";
             var selectedItem = Picker.SelectedItem as NewGames;
             //Checks which game did the user pick to assign the corresponding id
@@ -57,8 +59,9 @@ namespace FYP.Views
             string q6 = Question6.Text;
             string q7 = Question7.Text;
             string q8 = Question8.Text;
-            
+
             //Populates the file
+            DependencyService.Get<IFileService>().CreateFile(reviewId.ToString());
             DependencyService.Get<IFileService>().CreateFile(id);
             DependencyService.Get<IFileService>().CreateFile(q1);
             DependencyService.Get<IFileService>().CreateFile(q2);
@@ -75,22 +78,20 @@ namespace FYP.Views
             //Navigates to the next page
             await Navigation.PushAsync(new MainPage());
             //Clears the file after the user is done
-            DependencyService.Get<IFileService>().ClearFile();
+            //DependencyService.Get<IFileService>().ClearFile();
         }
 
         private void OnEditorTextedChanged(object sender, TextChangedEventArgs e)
         {
-            // Get the entered text
-            string text = e.NewTextValue;
-
-            // Verify if the entered text is a valid number
-            bool isValidNumber = double.TryParse(text, out double number);
-
-            // If the entered text is not a valid number, remove the last character
-            if (!isValidNumber && text.Length > 0)
+            double result;
+            if (double.TryParse(e.NewTextValue, out result))
             {
-                Editor editor = sender as Editor;
-                editor.Text = text.Substring(0, text.Length - 1);
+                // Input is a valid number, handle accordingly
+            }
+            else
+            {
+                // Input is not a valid number, display error message to user
+                DisplayAlert("Error", "Please enter a valid number.", "OK");
             }
         }
     }

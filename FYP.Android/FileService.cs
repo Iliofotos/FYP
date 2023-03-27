@@ -42,7 +42,7 @@ namespace FYP.Droid
         public void ClearFile()
         {
             //clears the file
-            File.WriteAllText(_destination, _filename);
+            File.WriteAllText(_destination, "");
         }
     }
 
