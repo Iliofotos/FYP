@@ -20,7 +20,7 @@
             <Label FontSize="Medium" HorizontalOptions="Center" Text="Do you think the game was overpriced?"/>
             <Editor x:Name="Question3" IsSpellCheckEnabled="True" HeightRequest="50" IsEnabled="False"/>
 
-            <Label FontSize="Medium" HorizontalOptions="Center" Text=" Did the gameplay meet your standards? If not how did it affect your opinion of the game?"/>
+            <Label FontSize="Medium" HorizontalOptions="Center" Text=" Did the gameplay meet your standards, If not how did it affect your opinion of the game?"/>
             <Editor x:Name="Question4" IsSpellCheckEnabled="True" HeightRequest="50" IsEnabled="False"/>
 
             <Label FontSize="Medium" HorizontalOptions="Center" Text=" What do you think about the game's age rating? (Is it correct?)"/>
