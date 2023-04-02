@@ -46,7 +46,9 @@ namespace FYP.Views
             {
                 if (selectedItem.GameTitle == "The Elder Scrolls Online") { id = "1"; }
                 else if (selectedItem.GameTitle == "World Of Warcraft") { id = "2"; }
-                else { id = "3"; }
+                else if (selectedItem.GameTitle == "Star Wars:The Old Republic") { id = "3"; }
+                else if (selectedItem.GameTitle == "Minecraft") { id = "4"; }
+                else if (selectedItem.GameTitle == "Fallout 76") { id = "5"; }
             }
             DoneButton.IsEnabled = true;
             SavedButton.IsEnabled = false;

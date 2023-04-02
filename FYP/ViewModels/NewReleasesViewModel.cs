@@ -50,6 +50,22 @@ namespace FYP.ViewModels
                 ImageSource = "https://assets-prd.ignimgs.com/2022/01/27/swotor-sq1-1643302998212.jpg",
                 Price = "Free"
             });
+            Games.Add(new NewGames
+            {
+                Id = 4,
+                GameTitle = "Minecraft",
+                Rating = 4.6,
+                ImageSource = "https://assets-prd.ignimgs.com/2021/12/14/minecraft-1639513933156.jpg",
+                Price = "29.99"
+            });
+            Games.Add(new NewGames
+            {
+                Id = 3,
+                GameTitle = "Fallout 76",
+                Rating = 2.6,
+                ImageSource = "https://assets1.ignimgs.com/2018/06/18/fallout-76---button-1529360580010.jpg",
+                Price = "39.99"
+            });
         }
     }
 }
