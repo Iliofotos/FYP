@@ -86,14 +86,13 @@ namespace FYP.Views
         private void OnEditorTextedChanged(object sender, TextChangedEventArgs e)
         {
             double result;
-            if (double.TryParse(e.NewTextValue, out result))
-            {
-                // Input is a valid number, handle accordingly
-            }
-            else
+            if (!double.TryParse(e.NewTextValue, out result))
             {
                 // Input is not a valid number, display error message to user
                 DisplayAlert("Error", "Please enter a valid number.", "OK");
+            }
+            else
+            {
             }
         }
     }
