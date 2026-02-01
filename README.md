@@ -53,5 +53,10 @@ Iliofotos Iliofotou
 
 GitHub: @Iliofotos
 
+Check out my projects:
+
+- 🏦 [Credit Card Default Prediction](https://github.com/Iliofotos/CreditCardDefaultPrediction) - ML classification with 5 algorithms on 30k records
+- 🏦 [IMDB Sentiment Analysis](https://github.com/Iliofotos/IMDBSentimentAnalysis/tree/main) - ML Sentiment Analysis using Multinomial Naive Bayes
+
 License
 This project is available for educational purposes.
